@@ -17,7 +17,7 @@ class ValgrindTestTask < Rake::TestTask
 
   def ruby(*args, **options, &block)
     valgrind_options = check_for_suppression_file(VALGRIND_OPTIONS)
-    command = "ulimit -s unlimited && valgrind #{valgrind_options.join(" ")} #{RUBY} #{args.join(" ")}"
+    command = "valgrind #{valgrind_options.join(" ")} #{RUBY} #{args.join(" ")}"
     sh(command, **options, &block)
   end
 
